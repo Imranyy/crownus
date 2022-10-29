@@ -103,7 +103,7 @@ const connect = async () => {
                         try {
                             ppgroup = await sock.profilePictureUrl(client.id, 'image')
                         } catch {
-                            ppgroup = 'https://3kllhk1ibq34qk6sp3bhtox1-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/44-incredible-404-error-pages@3x-1560x760.png'
+                            ppgroup = 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.sciencealert.com%2Fimages%2F2022%2F10%2FFriendlyAlienToys-642x260.jpg&imgrefurl=https%3A%2F%2Fwww.sciencealert.com%2Fdiscovering-even-friendly-aliens-could-have-some-real-risks-for-humanity&tbnid=MTUIqFBcRrAucM&vet=12ahUKEwjT4LT57YT7AhUngc4BHRN9DW0QMygbegUIARDPAQ..i&docid=z-fy6rxQMLCw7M&w=642&h=260&q=alien&ved=2ahUKEwjT4LT57YT7AhUngc4BHRN9DW0QMygbegUIARDPAQ'
                         }
                         if (client.action == 'add' && Ievent.includes(client.id)) {
                             let Itext = ` Hi @${num.split('@')[0]}, I'm Crownus👽 
@@ -120,7 +120,7 @@ welcome to ~> ${metadata.subject}
                             })
                         }
                         if (client.action == 'remove' && Ievent.includes(client.id)) {
-                            let gif = 'https://c.tenor.com/DLbH0i7N7yIAAAAd/bay-anime-bye-anime.mp4'
+                            let gif = 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.sciencealert.com%2Fimages%2F2022%2F10%2FFriendlyAlienToys-642x260.jpg&imgrefurl=https%3A%2F%2Fwww.sciencealert.com%2Fdiscovering-even-friendly-aliens-could-have-some-real-risks-for-humanity&tbnid=MTUIqFBcRrAucM&vet=12ahUKEwjT4LT57YT7AhUngc4BHRN9DW0QMygbegUIARDPAQ..i&docid=z-fy6rxQMLCw7M&w=642&h=260&q=alien&ved=2ahUKEwjT4LT57YT7AhUngc4BHRN9DW0QMygbegUIARDPAQ'
                             let desc = `Bye @${num.split('@')[0]}\n@${num.split('@')[0]} has left from ~>${metadata.subject}`
                             sock.sendMessage(client.id, {
                                 video: {
