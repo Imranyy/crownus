@@ -1,21 +1,12 @@
 {
-  "name": "DSC-RU-BOT",
-  "description": "whatsapp multi device bot by Rongo University students build with nodejs on baileys",
-  "repository": "https://github.com/dscrongo/DSC-RU-BOT/",
-  "logo": "https://i.imgur.com/GlcMZPx.jpeg",
-  "keywords": ["nodejs", "bot","Rongo","whatsapp bot", "whatsapp automation", "multi device"],
+  "name": "Crownus👽",
+  "description": "Crownus is multi device whatsapp bot build with nodejs on baileys",
+  "repository": "https://github.com/imranyy/crownus/",
+  "keywords": ["nodejs", "crownus"],
    "success_url": "/",
   "env": {
-    "PORT": {
-    "description": "Port of your bot 8080",
-     "required": true
-    },
     "NAME": {
     "description": "Name for your bot",
-    "required": true
-    },
-    "PREFIX": {
-    "description": "Set the prefix #",
     "required": true
     },
     "MODS": {
@@ -24,10 +15,6 @@
     },
     "APPNAME": {
      "description": "It will throw a get request to your app every 5 minutes interval.",
-     "required": true 
-    },
-    "PASSWORD": {
-     "description": "Password to deploy this bot, ivailable in GDSC chats (Royce)",
      "required": true 
     },
     "MONGODB": {

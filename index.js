@@ -1,6 +1,4 @@
-// If you are not good in js.
-// pls do not edit a damn shit.
-// 🤖 𝐃𝐒𝐂-𝐑𝐔-𝐁𝐎𝐓 🍃
+//Crownus👽
 const {
     default: WASocket,
     fetchLatestBaileysVersion,
@@ -108,21 +106,8 @@ const connect = async () => {
                             ppgroup = 'https://3kllhk1ibq34qk6sp3bhtox1-wpengine.netdna-ssl.com/wp-content/uploads/2017/12/44-incredible-404-error-pages@3x-1560x760.png'
                         }
                         if (client.action == 'add' && Ievent.includes(client.id)) {
-                            let Itext = `👋 Hi @${num.split('@')[0]}, I'm DSC-BOT _[RU] ♡! 
+                            let Itext = ` Hi @${num.split('@')[0]}, I'm Crownus👽 
 welcome to ~> ${metadata.subject}
-
-PREFIX:~ { # }
-
-OWNER:~ DSC ( Rongo Uni )
-
-Support us by following us on GitHub:
-
-https://github.com/dscrongo
-
-─「 ･WELCOME･ 」─
-⎙ GROUP INFO ⎙:
-
-~> ${metadata.desc}
 `
                             sock.sendMessage(client.id, {
                                 image: {

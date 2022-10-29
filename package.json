@@ -1,6 +1,6 @@
 {
-    "name": "dsc-rongo",
-    "version": "1.0.0",
+    "name": "Crownus👽",
+    "version": "1.2.0",
     "main": "index.js",
     "dependencies": {
         "@adiwajshing/baileys": "^4.4.0",

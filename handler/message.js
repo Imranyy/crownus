@@ -1,6 +1,3 @@
-// if you are not good in js
-// please do not edit a damn shit
-// 🤖 𝐃𝐒𝐂-𝐑𝐔-𝐁𝐎𝐓 🍃
 
 const {
     WASocket,
@@ -41,10 +38,10 @@ const heartbeats = require('heartbeats');
 const sortArray = require('sort-array')
 const ytdl = require('ytdl-core')
 const TD = require('better-tord');
-const name = process.env.NAME || "DSC-RU-BOT"
+const name = process.env.NAME || "Crownus"
 let mods = process.env.MODS;
 if (!mods) {
-    mods = "254718241545@s.whatsapp.net";
+    mods = "254754423664@s.whatsapp.net";
 }
 const ownerNumber = mods.split(",");
 const {
@@ -101,8 +98,8 @@ module.exports = async (sock, msg) => {
     const groupAdmins = groupMembers.filter((v) => v.admin)
         .map((v) => v.id)
     
-    const prefix = process.env.PREFIX
-    const isCmd = body.startsWith(prefix)
+    const Crownus = 'https://wa.me/+254754423664';
+    const isCmd = body;
     const isGroupAdmins = groupAdmins.includes(sender)
     const isBotGroupAdmins = groupMetadata && groupAdmins.includes(botId)
     const isOwner = ownerNumber.includes(sender)
@@ -176,19 +173,17 @@ module.exports = async (sock, msg) => {
         const linkThisGroup = `https://chat.whatsapp.com/${await sock.groupInviteCode(from)}`
         if (!body.includes(linkThisGroup)) {
             sock.groupParticipantsUpdate(from, [sender], 'remove')
-            reply("Removed successfully")
+            reply("Crownus👽\nRemoved successfully")
             return;
         }
     }
-    if (body.startsWith(prefix) && banned.includes(`${sender}`)) {
-        reply(`You are banned from using commands ❌`)
+    if (body && banned.includes(`${sender}`)) {
+        reply(`Crownus👽\nTry next time 👽`)
         return;
     }
-    ////catch (e) {
-    ////return reply(e)
-    ///}
+    
     const sendFile = async function (jid, path, quoted, options = {}) {
-        let mimetype = 'audio/mpeg' //getDevice(quoted.id) == 'ios' ? 'audio/mpeg' : 'audio/mp4'
+        let mimetype = 'audio/mpeg' 
         let opt = {
             fileName: options.fileName || '',
             ...options
@@ -237,7 +232,7 @@ module.exports = async (sock, msg) => {
         await db.add(`${sender}.Xp`, xp)
         const reactionMessage = {
             react: {
-                text: `✅`,
+                text: `👽`,
                 key: msg.key,
             },
         };
@@ -245,8 +240,6 @@ module.exports = async (sock, msg) => {
     }
     switch (command) {
     case 'hi': {
-        //console.log(msg.message.extendedTextMessage.contextInfo.participant)
-        //console.log(character)
         let xp = await db.get(`${sender}.Xp`)
         console.log(xp)
         reply(`Hey ${senderName}| Xp: ${xp}`)
@@ -287,7 +280,7 @@ module.exports = async (sock, msg) => {
                 }
                 image = await bufferToUrl(buffer)
             } else {
-                reply("❌ Give a media to convert into sticker!");
+                reply("Crownus👽\nGive a media to convert into sticker👽");
                 return;
             }
             reply(image.link)
@@ -298,17 +291,17 @@ module.exports = async (sock, msg) => {
     break
     case "google": {
         if (!text) {
-            reply('Provide a search term!')
+            reply('👽 Provide a search term!')
             return;
         }
         let {
             data
         } = await axios.get(`https://www.googleapis.com/customsearch/v1?q=${text}&key=AIzaSyDMbI3nvmQUrfjoCJYLS69Lej1hSXQjnWI&cx=baf9bdb0c631236e5`)
         if (data.items.length == 0) {
-            reply("❌ Unable to find any result")
+            reply("Unable to find any result 👽")
             return;
         }
-        let tex = `☆☆💥 GOOGLE SEARCH 💥☆☆\n🔍 Term ~> ${text}\n\n`;
+        let tex = `GOOGLE SEARCH 👽\n🔍 Term ~> ${text}\n\n`;
         for (let i = 0; i < data.items.length; i++) {
             tex += `🪧 Title ~> ${data.items[i].title}\n🖥 Description ~> ${data.items[i].snippet}\n🌐 Link ~> ${data.items[i].link}\n\n`
         }
@@ -320,17 +313,17 @@ module.exports = async (sock, msg) => {
     case "githubsearch":
     case "github": {
         if (!text) {
-            reply('Provide a search term!')
+            reply('👽 Provide a search term!')
             return;
         }
         let {
             data: repo
         } = await axios.get(`https://api.github.com/search/repositories?q=${text}`)
         if (repo.items.length == 0) {
-            reply("❌ Unable to find any result")
+            reply("Unable to find any result 👽")
             return;
         }
-        let tex = `☆☆💥 GITHUB SEARCH 💥☆☆\n🔍 Term ~> ${text}\n\n`;
+        let tex = `GITHUB SEARCH👽 \n🔍 Term ~> ${text}\n\n`;
         for (let i = 0; i < repo.items.length; i++) {
             tex += `🪧 Name ~> ${repo.items[i].name}\n👤 Watchers ~> ${repo.items[i].watchers_count}\n⭐️ Stars ~> ${repo.items[i].stargazers_count}\n📛 Forks ~> ${repo.items[i].forks_count}\n🖥 Description ~> ${repo.items[i].description}\n🌐 Link ~> ${repo.items[i].html_url}\n\n`
         }
@@ -377,7 +370,7 @@ module.exports = async (sock, msg) => {
             });
         } catch (e) {
             await sock.sendMessage(from, {
-                text: `Something bad happend\n${e.message}`
+                text: `Crownus👽\nSomething bad happend\n${e.message}`
             }, {
                 quoted: msg
             });
@@ -398,7 +391,7 @@ module.exports = async (sock, msg) => {
     case "sc":
     case "sadcat": {
         if (!text) {
-            reply('Provide a the text!')
+            reply('👽 Provide a the text!')
             return;
         }
         const response = await axios.get(`https://api.popcat.xyz/sadcat?text=${text}`, {
@@ -408,13 +401,13 @@ module.exports = async (sock, msg) => {
         try {
             await sock.sendMessage(from, {
                 image: buffer,
-                caption: "Here you go"
+                caption: "Crownus👽"
             }, {
                 quoted: msg
             });
         } catch (e) {
             await sock.sendMessage(from, {
-                text: `Something bad happend\n${e.message}`
+                text: `Crownus👽\nSomething is not right\n${e.message}`
             }, {
                 quoted: msg
             });
@@ -423,7 +416,7 @@ module.exports = async (sock, msg) => {
     break
     case 'lyrics': {
         if (!text) {
-            reply('Provide a the search term!')
+            reply('👽 Provide a the search term!')
             return;
         }
         try {
@@ -444,13 +437,12 @@ module.exports = async (sock, msg) => {
     case 'del':
     case 'delete': {
         if (!msg.message.extendedTextMessage) {
-            reply("❌ Tag message to delete.");
+            reply("👽 Tag message to delete.");
             return;
         }
         
         //bot message, anyone can delete
         if (msg.message.extendedTextMessage.contextInfo.participant == botId) {
-            // reply("❌ Tag message of bot to delete.");
             const options = {
                 remoteJid: botId,
                 fromMe: true,
@@ -461,7 +453,7 @@ module.exports = async (sock, msg) => {
             });
             return;
         } else {
-            reply("❌ Only bot massage can be delete.");
+            reply("👽 Only bot message can be delete.");
         }
     }
     break
@@ -550,11 +542,11 @@ module.exports = async (sock, msg) => {
     case 's': {
         if (text) {
             anu = text.split('|')
-            packName = anu[0] !== '' ? anu[0] : "BOT 🤖 RU"
-            authorName = anu[1] !== '' ? anu[1] : "Royce_Bob"
+            packName = anu[0] !== '' ? anu[0] : "Crownus👽"
+            authorName = anu[1] !== '' ? anu[1] : "Crownus👽"
         } else {
-            packName = "BOT 🤖 RU";
-            authorName = "Royce_Bob";
+            packName = "Crownus👽";
+            authorName = "Crownus👽";
         }
         const getRandom = (ext) => {
             return `${Math.floor(Math.random() * 10000)}${ext}`;
@@ -608,7 +600,7 @@ module.exports = async (sock, msg) => {
                 quality: 40,
             });
         } else {
-            reply("❌ Give a media to convert into sticker!");
+            reply("👽 Give a media to convert into sticker!");
             return;
         }
         
@@ -629,7 +621,7 @@ module.exports = async (sock, msg) => {
     break
     case 'image': {
         if (!isQuoted) {
-            reply("❌ Give a sticker to convert into media!");
+            reply("👽 Give a sticker to convert into media!");
             return;
         }
         const getRandom = (ext) => {
@@ -664,7 +656,7 @@ module.exports = async (sock, msg) => {
             fs.unlinkSync(media);
         } else {
             reply(
-                "❌ There is some problem!\nTag a non-animated sticker with command to convert to Image!"
+                "👽 There is some problem!\nTag a non-animated sticker with command to convert to Image!"
             );
         }
     }
@@ -672,12 +664,12 @@ module.exports = async (sock, msg) => {
     case "imagesearch":
     case "img": {
         if (!text) {
-            reply('Provide a search term!')
+            reply('👽 Provide a search term!')
             return;
         }
         try {
             if (!text) {
-                let message = `❌ Query is not given! \nSend ${prefix}is query`;
+                let message = `👽 Query is not given! \nSend ${prefix}is query`;
                 reply(message);
                 return;
             }
@@ -689,7 +681,6 @@ module.exports = async (sock, msg) => {
                     console.log(error);
                     reply(error);
                 } else {
-                    //   console.log(JSON.stringify(results, null, "  "));
                     let index = 0;
                     if (results.length >= 10) {
                         index = Math.floor(Math.random() * 10);
@@ -703,14 +694,14 @@ module.exports = async (sock, msg) => {
                                 image: {
                                     url: img
                                 },
-                                caption: "🤖 𝐃𝐒𝐂-𝐑𝐔-𝐁𝐎𝐓 🍃"
+                                caption: "Crownus👽"
                             }, {
                                 quoted: msg
                             }
                         );
                     } catch (err) {
                         console.log(err)
-                        reply("❌ Error in search!");
+                        reply("👽 Error in search!");
                     }
                 }
             });
@@ -738,11 +729,11 @@ module.exports = async (sock, msg) => {
             }
             if (text) {
                 anu = text.split('|')
-                packName = anu[0] !== '' ? anu[0] : "BOT 🤖 RU"
-                authorName = anu[1] !== '' ? anu[1] : "Royce_Bob"
+                packName = anu[0] !== '' ? anu[0] : "Crownus👽"
+                authorName = anu[1] !== '' ? anu[1] : "Crownus👽"
             } else {
-                packName = "BOT 🤖 RU";
-                authorName = "Royce_Bob";
+                packName = "Crownus👽";
+                authorName = "Crownus👽";
             }
             
             const sticker = new Sticker(buffer, {
@@ -756,7 +747,7 @@ module.exports = async (sock, msg) => {
             });
             return;
         } else {
-            reply("❌ Tag a sticker!");
+            reply("Crownus👽\n Tag a sticker!");
             return;
         }
     }
@@ -764,7 +755,7 @@ module.exports = async (sock, msg) => {
     case 'ytsearch':
     case 'yts': {
         if (!text) {
-            reply('Provide a search term! e.g Rongo University')
+            reply('Crownus👽\n Provide a search term!')
             return;
         }
         const term = text;
@@ -772,11 +763,11 @@ module.exports = async (sock, msg) => {
             videos
         } = await yts(term);
         if (!videos || videos.length <= 0) {
-            reply(`No Matching videos found for : *${term}*!!`)
+            reply(`Crownus👽\n Can't find a match : *${term}*!!`)
             return;
         }
         const length = videos.length < 10 ? videos.length : 10;
-        let tex = `☆☆💥 YOUTUBE SEARCH💥☆☆\n🔍 Term ~> ${term}\n\n`;
+        let tex = `YOUTUBE SEARCH 👽\n🔍 Term ~> ${term}\n\n`;
         for (let i = 0; i < length; i++) {
             tex += `🌐 Link ~> ${videos[i].url}\n👤 Channel ~> ${videos[i].author.name}\n🖥 Title ~> ${videos[i].title}\n\n`;
         }
@@ -786,7 +777,7 @@ module.exports = async (sock, msg) => {
     break
     case 'play': {
         if (!text) {
-            reply('Provide a search term! e.g DSC Rongo')
+            reply('Crownus👽\n Provide a search term!')
             return;
         }
         try {
@@ -794,14 +785,14 @@ module.exports = async (sock, msg) => {
                 videos
             } = await yts(text);
             if (!videos || videos.length <= 0) {
-                reply(`No Matching videos found for : *${args[0]}*!!`)
+                reply(`Crownus👽\n Can't find a match : *${args[0]}*!!`)
                 return;
             }
             let urlYt = videos[0].url
             let infoYt = await ytdl.getInfo(urlYt);
             //30 MIN
             if (infoYt.videoDetails.lengthSeconds >= 1800) {
-                reply(`❌ Audio too big!`);
+                reply(`Crownus👽\n Audio is too big!`);
                 return;
             }
             const getRandom = (ext) => {
@@ -814,7 +805,6 @@ module.exports = async (sock, msg) => {
                 })
                 .pipe(fs.createWriteStream(`./${randomName}`));
             console.log("Audio downloading ->", urlYt);
-            // reply("Downloading.. This may take upto 5 min!");
             await new Promise((resolve, reject) => {
                 stream.on("error", reject);
                 stream.on("finish", resolve);
@@ -837,7 +827,7 @@ module.exports = async (sock, msg) => {
                     }
                 );
             } else {
-                reply(`❌ File size bigger than 40mb.`);
+                reply(`Crownus👽\n File size bigger than 40mb.`);
             }
             fs.unlinkSync(`./${randomName}`);
         } catch (e) {
@@ -867,7 +857,7 @@ module.exports = async (sock, msg) => {
         }
         arr.push(sender)
         arr.push(user2)
-        let caption = `\t❣️ *Matchmaking...* ❣️ \n`
+        let caption = `\t👽*Matchmaking...*👽 \n`
         caption += `\t\t---------------------------------\n`
         caption += `@${sender.split('@')[0]}  x  @${user2.split('@')[0]}\n`
         caption += `\t\t---------------------------------\n`
@@ -889,19 +879,19 @@ module.exports = async (sock, msg) => {
             return `${Math.floor(Math.random() * 10000)}${ext}`;
         };
         if (args.length === 0) {
-            reply(`❌ URL is empty! \nSend ${prefix}ytv url`);
+            reply(`Crownus👽\n URL is empty! \nSend ${prefix}ytv url`);
             return;
         }
         try {
             let urlYt = args[0];
             if (!urlYt.startsWith("http")) {
-                reply(`❌ Give youtube link!`);
+                reply(`Crownus👽\n Give youtube link!`);
                 return;
             }
             let infoYt = await ytdl.getInfo(urlYt);
             //30 MIN
             if (infoYt.videoDetails.lengthSeconds >= 1800) {
-                reply(`❌ Video file too big!`);
+                reply(`Crownus👽\n Video file too big!`);
                 return;
             }
             let titleYt = infoYt.videoDetails.title;
@@ -911,9 +901,7 @@ module.exports = async (sock, msg) => {
                     filter: (info) => info.itag == 22 || info.itag == 18,
                 })
                 .pipe(fs.createWriteStream(`./${randomName}`));
-            //22 - 1080p/720p and 18 - 360p
             console.log("Video downloading ->", urlYt);
-            // reply("Downloading.. This may take upto 5 min!");
             await new Promise((resolve, reject) => {
                 stream.on("error", reject);
                 stream.on("finish", resolve);
@@ -934,7 +922,7 @@ module.exports = async (sock, msg) => {
                     }
                 );
             } else {
-                reply(`❌ File size bigger than 40mb.`);
+                reply(`Crownus👽\n File size bigger than 40mb.`);
             }
             
             fs.unlinkSync(`./${randomName}`);
@@ -949,19 +937,19 @@ module.exports = async (sock, msg) => {
             return `${Math.floor(Math.random() * 10000)}${ext}`;
         };
         if (args.length === 0) {
-            reply(`❌ URL is empty! \nSend ${prefix}yta url`);
+            reply(`Crownus👽\n URL is empty! \nSend ${prefix}yta url`);
             return;
         }
         try {
             let urlYt = args[0];
             if (!urlYt.startsWith("http")) {
-                reply(`❌ Give youtube link!`);
+                reply(`Crownus👽\n Give youtube link!`);
                 return;
             }
             let infoYt = await ytdl.getInfo(urlYt);
             //30 MIN
             if (infoYt.videoDetails.lengthSeconds >= 1800) {
-                reply(`❌ Video too big!`);
+                reply(`Crownus👽\n Video too big!`);
                 return;
             }
             let titleYt = infoYt.videoDetails.title;
@@ -994,7 +982,7 @@ module.exports = async (sock, msg) => {
                     }
                 );
             } else {
-                reply(`❌ File size bigger than 40mb.`);
+                reply(`Crownus👽\n File size bigger than 40mb.`);
             }
             fs.unlinkSync(`./${randomName}`);
         } catch (e) {
@@ -1003,12 +991,12 @@ module.exports = async (sock, msg) => {
     }
     break
     case "remove": {
-        if (!isGroupAdmins) return reply('Its an admin command')
-        if (!isBotGroupAdmins) return reply('Bot is not admin')
+        if (!isGroupAdmins) return reply('Crownus👽\nIts an admin command')
+        if (!isBotGroupAdmins) return reply('Crownus👽\nBot is not admin')
         try {
             user = msg.message.extendedTextMessage.contextInfo.participant || mentioned[0] || undefined
         } catch {
-            reply("Please tag the user")
+            reply("Crownus👽\nPlease tag the user")
             return;
         }
         await sock.groupParticipantsUpdate(
@@ -1016,80 +1004,80 @@ module.exports = async (sock, msg) => {
                 [user],
             "remove"
         );
-        return reply("✔ Number removed from group!");
+        return reply("Crownus👽\n Number removed from group!");
         
     }
     break
     case "antilink": {
-        if (!text) return reply('Please put the option name')
-        if (!isGroupAdmins) return reply('Its an admin command')
-        if (!isBotGroupAdmins) return reply('Bot is not admin')
+        if (!text) return reply('Crownus👽\nPlease put the option name')
+        if (!isGroupAdmins) return reply('Crownus👽\nIts an admin command')
+        if (!isBotGroupAdmins) return reply('Crownus👽\nBot is not admin')
         switch (text) {
         case "on": {
             let its = await db.get('antilink') || []
             
-            if (its.includes(from)) return reply("Already registered")
+            if (its.includes(from)) return reply("Crownus👽\nAlready registered")
             await db.push('antilink', from)
-            return reply('Antilink has been register!')
+            return reply('Crownus👽\nAntilink has been register!')
         }
         break
         case "off": {
             let its = await db.get('antilink') || []
             if (!its.includes(from)) return reply('Already off')
             await db.pull('antilink', from)
-            return reply("Antilink has been trurned off here")
+            return reply("Crownus👽\nAntilink has been trurned off here")
         }
         break
         default:
-            reply(`No such option please choose between [ on / off ]`)
+            reply(`Crownus👽\nNo such option please choose between [ on / off ]`)
             return;
         }
     }
     break
     case "event": {
-        if (!text) return reply('Please put the option name')
-        if (!isGroupAdmins) return reply('Its an admin command')
+        if (!text) return reply('Crownus👽\nPlease put the option name')
+        if (!isGroupAdmins) return reply('Crownus👽\nIts an admin command')
         switch (text) {
         case "on": {
             let its = await db.get('event') || []
             
-            if (its.includes(from)) return reply("Already registered")
+            if (its.includes(from)) return reply("Crownus👽\nAlready registered")
             await db.push('event', from)
-            return reply('Event has been register!')
+            return reply('Crownus👽\nEvent has been register!')
         }
         break
         case "off": {
             let its = await db.get('event') || []
-            if (!its.includes(from)) return reply('Alrady off')
+            if (!its.includes(from)) return reply('Crownus👽\nAlrady off')
             await db.pull('event', from)
-            return reply("Event has been turned off here")
+            return reply("Crownus👽\nEvent has been turned off here")
         }
         break
         default:
-            reply(`No such option please choose between [ on / off ]`)
+            reply(`Crownus👽\nNo such option please choose between [ on / off ]`)
             return;
         }
     }
     break
     case "ban": {
         if (!isOwner) {
-            reply("For Owner only !")
+            reply("Crownus👽\nFor Owner only !")
             return;
         }
         arr = []
         try {
             user = msg.message.extendedTextMessage.contextInfo.participant || mentioned[0] || undefined
         } catch {
-            reply("Please tag the user")
+            reply("Crownus👽\nPlease tag the user")
             return;
         }
         arr.push(user)
         let ban = await db.get('banned') || []
         
-        if (ban.includes(user)) return reply("Already banned")
+        if (ban.includes(user)) return reply("Crownus👽\nAlready banned")
         await db.push('banned', user)
         await sock.sendMessage(from, {
-            text: `Succesfully banned @${user.split("@")[0]}`,
+            text: `Crownus👽\nSuccesfully banned @${user.split("@")[0]}`,
             mentions: arr
         }, {
             quoted: msg
@@ -1098,23 +1086,23 @@ module.exports = async (sock, msg) => {
     break
     case "unban": {
         if (!isOwner) {
-            reply("Owner only")
+            reply("Crownus👽\nOwner only")
             return;
         }
         arr = []
         try {
             user = msg.message.extendedTextMessage.contextInfo.participant || mentioned[0] || undefined
         } catch {
-            reply("Please tag the user")
+            reply("Crownus👽\nPlease tag the user")
             return;
         }
         arr.push(user)
         let ban = await db.get('banned') || []
         
-        if (!ban.includes(user)) return reply("Not banned")
+        if (!ban.includes(user)) return reply("Crownus👽\nNot banned")
         await db.pull('banned', user)
         await sock.sendMessage(from, {
-            text: `Succesfully unbanned @${user.split("@")[0]}`,
+            text: `Crownus👽\nSuccesfully unbanned @${user.split("@")[0]}`,
             mentions: arr
         }, {
             quoted: msg
@@ -1130,7 +1118,7 @@ module.exports = async (sock, msg) => {
                 reply(tet)
             })
             .catch((err) => {
-                reply(`✖  An error occurred, \n Please report that command to \n Rongo University students developers club.`)
+                reply(`Crownus👽\n  An error occurred, \n Please report that command to \n Rongo University students developers club.`)
             })
     }
     break
@@ -1149,7 +1137,7 @@ module.exports = async (sock, msg) => {
     break
     case 'getgif':
     case 'gify': {
-        if (!text) return reply("❌ No query provided!")
+        if (!text) return reply("Crownus👽\n No query provided!")
         try {
             let {
                 data: gi
@@ -1158,7 +1146,7 @@ module.exports = async (sock, msg) => {
                 video: {
                     url: gi.results?.[Math.floor(Math.random() * gi.results.length)]?.media[0]?.mp4?.url
                 },
-                caption: "Here you go",
+                caption: "Crownus👽\nHere you go",
                 gifPlayback: true
             }, {
                 quoted: msg
@@ -1172,26 +1160,26 @@ module.exports = async (sock, msg) => {
     
     break
     case "nsfw": {
-        if (!text) return reply('Please put the option name')
-        if (!isGroupAdmins) return reply('Its an admin command')
+        if (!text) return reply('Crownus👽\nPlease put the option name')
+        if (!isGroupAdmins) return reply('Crownus👽\nIts an admin command')
         switch (text) {
         case "on": {
             let its = await db.get('nsfw') || []
             
-            if (its.includes(from)) return reply("Alrady registered")
+            if (its.includes(from)) return reply("Crownus👽\nAlrady registered")
             await db.push('nsfw', from)
-            return reply('NSFW has been register!')
+            return reply('Crownus👽\nNSFW has been register!')
         }
         break
         case "off": {
             let its = await db.get('nsfw') || []
             if (!its.includes(from)) return reply('Alrady off')
             await db.pull('nsfw', from)
-            return reply("NSFW has been trurned off here")
+            return reply("Crownus👽\nNSFW has been trurned off here")
         }
         break
         default:
-            reply(`No such option please choose between [ on / off ]`)
+            reply(`Crownus👽\nNo such option please choose between [ on / off ]`)
             return;
         }
     }
@@ -1199,7 +1187,7 @@ module.exports = async (sock, msg) => {
     case 'wiki':
     case 'wikipedia': {
         try {
-            if (!text) return reply(`Provide the term to search, e.g *Rongo university* `)
+            if (!text) return reply(`Crownus👽\nProvide the term to search, e.g *Rongo university* `)
             const con = await wiki.summary(text);
             const tex = `Title:~> ${con.title}
                   
@@ -1212,7 +1200,7 @@ URL:~> ${con.content_urls.mobile.page}
             reply(tex)
         } catch (err) {
             console.log(err)
-            return reply(`❌ Your text isn't valid`)
+            return reply(`Crownus👽\n Your text isn't valid`)
         }
     }
     break
@@ -1252,7 +1240,7 @@ URL:~> ${con.content_urls.mobile.page}
     break
     case "leaderboard":
     case "lb": {
-        if ((groupMembers.length - 10) < 0) return reply("Sorry leaderboard is not possible in less then 10 members group")
+        if ((groupMembers.length - 10) < 0) return reply("Crownus👽\nSorry leaderboard is not possible in less then 10 members group")
         let arr = []
         let mention = []
         for (let i = 0; i < groupMembers.length; i++) {
@@ -1268,7 +1256,7 @@ URL:~> ${con.content_urls.mobile.page}
             by: 'xp',
             order: 'desc'
         })
-        let result = `☆☆💥 LEADERBOARD💥☆☆\n🌐 Type ~> Experience\n\n`
+        let result = `LEADERBOARD👽\n🌐 Type ~> Experience\n\n`
         for (let i = 0; i < 10; i++) {
             mention.push(arr[i].id)
             let character = await db.get(`${arr[i].id}.marry`) || "None"
@@ -1286,14 +1274,14 @@ URL:~> ${con.content_urls.mobile.page}
     }
     break
     case "anime": {
-        if (!text) return reply("Please provite the anime name")
+        if (!text) return reply("Crownus👽\nPlease provite the anime name")
         const {
             data
         } = await axios.get(
                 `https://api.jikan.moe/v4/anime?q=${text}`
             )
             .catch((err) => {
-                return reply("Unable to find the anime")
+                return reply("Crownus👽\nCrownus👽\nUnable to find the anime")
             });
         results = ""
         for (let i = 0; i < data.data.length; i++) {
@@ -1311,15 +1299,15 @@ URL:~> ${con.content_urls.mobile.page}
     break
     case "aid": {
         if (!args[0]) {
-            reply("Please provide the ID")
+            reply("Crownus👽\nPlease provide the ID")
             return;
         }
         if (isNaN(args[0])) {
-            reply("Please provide the ID")
+            reply("Crownus👽\nPlease provide the ID")
             return;
         }
         if (args[0].includes("-") || args[0].includes("+")) {
-            reply("Please provide the ID")
+            reply("Crownus👽\nPlease provide the ID")
             return;
         }
         const {
@@ -1328,7 +1316,7 @@ URL:~> ${con.content_urls.mobile.page}
                 `https://api.jikan.moe/v4/anime/${args[0]}/full`
             )
             .catch((err) => {
-                return reply("Unable to find the anime")
+                return reply("Crownus👽\nUnable to find the anime")
             });
         let txt = `*${data.data.title}*
 
@@ -1368,7 +1356,7 @@ URL:~> ${con.content_urls.mobile.page}
         } = await axios
             .get(`https://api.jikan.moe/v4/characters?q=${text}`)
             .catch((err) => {
-                return reply(`Couldn't find any matching character.`);
+                return reply(`Crownus👽\nCouldn't find any matching character.`);
             });
         
         let txt = "";
@@ -1387,15 +1375,15 @@ URL:~> ${con.content_urls.mobile.page}
     break
     case "charid": {
         if (!args[0]) {
-            reply("Please provide the ID")
+            reply("Crownus👽\nPlease provide the ID")
             return;
         }
         if (isNaN(args[0])) {
-            reply("Please provide the ID")
+            reply("Crownus👽\nPlease provide the ID")
             return;
         }
         if (args[0].includes("-") || args[0].includes("+")) {
-            reply("Please provide the ID")
+            reply("Crownus👽\nPlease provide the ID")
             return;
         }
         const {
@@ -1403,7 +1391,7 @@ URL:~> ${con.content_urls.mobile.page}
         } = await axios
             .get(`https://api.jikan.moe/v4/characters/${args[0]}/full`)
             .catch((err) => {
-                return reply(`Couldn't find any character id.`);
+                return reply(`Crownus👽\nCouldn't find any character id.`);
             });
         
         let txt = `*${data.data.name}*\n\n`;
@@ -1450,27 +1438,27 @@ URL:~> ${con.content_urls.mobile.page}
     }
     break
     case "open": {
-        if (!isGroupAdmins) return reply('Its an admin command')
-        if (!isBotGroupAdmins) return reply('Bot is not admin')
-        if (!groupMetadata) return reply('Try Again!')
+        if (!isGroupAdmins) return reply('Crownus👽\nIts an admin command')
+        if (!isBotGroupAdmins) return reply('Crownus👽\nBot is not admin')
+        if (!groupMetadata) return reply('Crownus👽\nTry Again!')
         const {
             announce
         } = await sock.groupMetadata(from)
         if (!announce) return reply('Already opened!')
         await sock.groupSettingUpdate(from, 'not_announcement')
-        reply("Group opened")
+        reply("Crownus👽\nGroup opened")
     }
     break
     case "close": {
-        if (!isGroupAdmins) return reply('Its an admin command')
-        if (!isBotGroupAdmins) return reply('Bot is not admin')
-        if (!groupMetadata) return reply('Try Again!')
+        if (!isGroupAdmins) return reply('Crownus👽\nIts an admin command')
+        if (!isBotGroupAdmins) return reply('Crownus👽\nBot is not admin')
+        if (!groupMetadata) return reply('Crownus👽\nTry Again!')
         const {
             announce
         } = await sock.groupMetadata(from)
-        if (announce) return reply('Already closed!')
+        if (announce) return reply('Crownus👽\nAlready closed!')
         await sock.groupSettingUpdate(from, 'announcement')
-        reply("Group Closed")
+        reply("Crownus👽\nGroup Closed")
     }
     break
     case 'flip': {
@@ -1513,36 +1501,36 @@ URL:~> ${con.content_urls.mobile.page}
     }
     break
     case "demote": {
-        if (!isGroupAdmins) return reply('Its an admin command')
-        if (!isBotGroupAdmins) return reply('Bot is not admin')
+        if (!isGroupAdmins) return reply('Crownus👽\nIts an admin command')
+        if (!isBotGroupAdmins) return reply('Crownus👽\nBot is not admin')
         try {
             user = msg.message.extendedTextMessage.contextInfo.participant || mentioned[0] || undefined
         } catch {
-            reply("Please tag the user")
+            reply("Crownus👽\nPlease tag the user")
             return;
         }
         if (user === groupMetadata.owner || '') {
-            return reply(`Skipped as they're the owner`)
+            return reply(`Crownus👽\nSkipped as they're the owner`)
             //return reply(`${tex}`)
         }
         if (!groupAdmins.includes(user)) {
-            return reply(`Skipped as they're not admin`)
+            return reply(`Crownus👽\nSkipped as they're not admin`)
             //return reply(`${tex}`)
         }
         await sock.groupParticipantsUpdate(from, [user], 'demote')
     }
     break
     case "promote": {
-        if (!isGroupAdmins) return reply('Its an admin command')
-        if (!isBotGroupAdmins) return reply('Bot is not admin')
+        if (!isGroupAdmins) return reply('Crownus👽\nIts an admin command')
+        if (!isBotGroupAdmins) return reply('Crownus👽\nBot is not admin')
         try {
             user = msg.message.extendedTextMessage.contextInfo.participant || mentioned[0] || undefined
         } catch {
-            reply("Please tag the user")
+            reply("Crownus👽\nPlease tag the user")
             return;
         }
         if (groupAdmins.includes(user)) {
-            return reply(`Skipped as they're already admin`)
+            return reply(`Crownus👽\nSkipped as they're already admin`)
             //return reply(`${tex}`)
         }
         await sock.groupParticipantsUpdate(from, [user], 'promote')
@@ -1577,7 +1565,7 @@ URL:~> ${con.content_urls.mobile.page}
             });
         } catch (e) {
             await sock.sendMessage(from, {
-                text: `Something bad happend\n${e.message}`
+                text: `Crownus👽\nSomething bad happend\n${e.message}`
             }, {
                 quoted: msg
             });
@@ -1585,12 +1573,12 @@ URL:~> ${con.content_urls.mobile.page}
     }
     break
     case 'pokemon': {
-        if (!text) return reply("❌ No query provided!")
+        if (!text) return reply("Crownus👽\n No query provided!")
         try {
             let {
                 data: data
             } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${text}`)
-            if (!data.name) return reply(`❌ No such pokemon`)
+            if (!data.name) return reply(`Crownus👽\n No such pokemon`)
             let yu = `*Name: ${data.name}*\n*Pokedex ID: ${data.id}*\n*Weight: ${data.weight}*\n*Height: ${data.height}*\n*Base Experience: ${data.base_experience}*\n*Abilities: ${data.abilities[0].ability.name}, ${data.abilities[1].ability.name}*\n*Type: ${data.types[0].type.name}*\n*HP: ${data.stats[0].base_stat}*\n*Attack: ${data.stats[1].base_stat}*\n*Defense: ${data.stats[2].base_stat}*\n*Special Attack: ${data.stats[3].base_stat}*\n*Special Defense:${data.stats[4].base_stat}*\n*Speed: ${data.stats[5].base_stat}*\n`
             sock.sendMessage(from, {
                 image: {
@@ -1601,7 +1589,7 @@ URL:~> ${con.content_urls.mobile.page}
                 quoted: msg
             })
         } catch (err) {
-            reply("An Error Occurred")
+            reply("Crownus👽\nAn Error Occurred")
             console.log(err)
         }
     }
@@ -1609,10 +1597,7 @@ URL:~> ${con.content_urls.mobile.page}
     
     case "help": {
         try {
-            reply(`👋 Hi ${senderName}, I'm ${name}_[ *Rongo Uni-Bot* ] ♡! 
-
-💡 PREFIX:~> ${prefix} Made with ❤ by DSC
-
+            reply(`Hi ${senderName}, I'm ${name}👽 
             🤖 *Command List* 🤖
 
 ℹ️ *Mods*:-
@@ -1651,77 +1636,73 @@ URL:~> ${con.content_urls.mobile.page}
     }
     break
     case "check": {
-        reply(`👋 Hi ${senderName}, I'm ${name}_[ *Rongo Uni-Bot* ] ♡! 
-
-💡 PREFIX:~> ${prefix}
+        reply(` Hi ${senderName}, I'm ${name}👽 
 
 📛 *Check list*
 
-#awesomecheck
-#greatcheck
-#gaycheck
-#lesbiancheck
-#cutecheck
-#hornycheck
-#prettycheck
-#lovelycheck
-#uglycheck
-#beautifulcheck
-#handsomecheck
-#charactercheck
+awesomecheck
+greatcheck
+gaycheck
+lesbiancheck
+cutecheck
+hornycheck
+prettycheck
+lovelycheck
+uglycheck
+beautifulcheck
+handsomecheck
+charactercheck
 
 ⁃ _Check the things in list in you_ 💮
 
 Support us by following us on GitHub:
 
-https://github.com/DSCRongo`)
+https://github.com/crownus`)
     }
     break
     case "reaction": {
-        reply(`👋 Hi ${senderName}, I'm ${name}_[ *Rongo Uni-Bot* ] ♡! 
-
-💡 PREFIX:~> ${prefix}
+        reply(` Hi ${senderName}, I'm ${name}👽 
 
 📛 *Reaction List*
 
-#cry
-#kiss
-#bully
-#hug
-#lick
-#cuddle
-#pat
-#smug
-#highfive
-#bonk
-#yeet
-#blush
-#wave
-#smile
-#handhold
-#nom
-#bite
-#glomp
-#kill
-#slap
-#cringe
-#kick
-#wink
-#happy
-#poke
-#punch
-#dance
+cry
+kiss
+bully
+hug
+lick
+cuddle
+pat
+smug
+highfive
+bonk
+yeet
+blush
+wave
+smile
+handhold
+nom
+bite
+glomp
+kill
+slap
+cringe
+kick
+wink
+happy
+poke
+punch
+dance
 
 -  _Let's React_ 🔰
 
 Support us by following us on GitHub:
 
-https://github.com/DSCRongo`)
+https://github.com/crownus`)
     }
     break
     case 'define':
     case 'dictionary': {
-        if (!text) return reply(`Please provide me the search term.`)
+        if (!text) return reply(`Crownus👽\nPlease provide me the search term.`)
         try {
             def = await axios.get(`http://api.urbandictionary.com/v0/define?term=${text}`)
             if (!def) return reply(`${text} isn't a valid text`)
@@ -1739,7 +1720,7 @@ Definition:~> ${def.data.list[0].definition
             reply(defi)
         } catch (err) {
             console.log(err.toString())
-            return reply("Sorry could not find the result!!!!!")
+            return reply("Crownus👽\nSorry could not find the result!!!!!")
         }
     }
     break
@@ -1913,7 +1894,7 @@ Definition:~> ${def.data.list[0].definition
         } catch {
             ppuser = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMxMUXFtd5GrFkxyrU-f5zA2IH8MZ-U-cFKg&usqp=CAU'
         }
-        let card = `❢ Name ❢: ${senderName}
+        let card = `Name : ${senderName}
 
 ⊷ User xp ⊷: ${exp} / ${required}
 
@@ -2018,7 +1999,7 @@ https://github.com/DSCRongo`
     case "subreddit":
     case 'sr': {
         if (!text) {
-            reply('Provide a search term!')
+            reply('Crownus👽\nProvide a search term!')
             return;
         }
         const sr = text
@@ -2026,7 +2007,7 @@ https://github.com/DSCRongo`
             const {
                 data
             } = await axios.get(`https://meme-api.herokuapp.com/gimme/${sr}`);
-            if (!nsfw.includes(from) && data.nsfw) return reply(`Hentai is not registered on ${groupName}`)
+            if (!nsfw.includes(from) && data.nsfw) return reply(`Crownus👽\nHentai is not registered on ${groupName}`)
             const xz = `Title : ${data.title} 
 
 Postlink : ${data.postLink}     
@@ -2046,18 +2027,18 @@ Spoiler: ${data.spoiler}`
                 quoted: msg
             });
         } catch (err) {
-            await reply('There is no such subreddit, Baka!')
+            await reply('Crownus👽\nThere is no such subreddit, Baka!')
             console.log(err)
         }
     }
     break
     case 'bc': {
         if (!isOwner) {
-            reply("Owner only!!!!")
+            reply("Crownus👽\nOwner only!!!!")
             return;
         }
         if (!text) {
-            reply("❌ No query provided!")
+            reply("Crownus👽\n No query provided!")
             return;
         }
         let getGroups = await sock.groupFetchAllParticipating()
@@ -2065,7 +2046,7 @@ Spoiler: ${data.spoiler}`
             .slice(0)
             .map(entry => entry[1])
         let res = groups.map(v => v.id)
-        reply(` Broadcasting in ${res.length} Group Chat, in ${res.length * 1.5} seconds`)
+        reply(`Crownus👽\n Broadcasting in ${res.length} Group Chat, in ${res.length * 1.5} seconds`)
         for (let i of res) {
             let txt = `🔰</ *${name} Broadcast* >🔰\n\n🏮 Message:~> ${text}`
             await sock.sendMessage(i, {
@@ -2075,12 +2056,12 @@ Spoiler: ${data.spoiler}`
                 caption: `${txt}`
             })
         }
-        reply(`Successfuly Broadcasted in ${res.length} Groups`)
+        reply(`Crownus👽\nSuccessfuly Broadcasted in ${res.length} Groups`)
     }
     break
     default:
-        if (body.startsWith(prefix)) {
-            reply(`BAKA!! This is an unlisted command, read the commands in ${prefix}help \n To help add this command report to \n Rongo University developers.`)
+        if (body) {
+            reply(`Crownus👽\n This is an unlisted command, read the commands in help \n To help add this command report to \n ${Crownus}👽.`)
         }
         break
     }
