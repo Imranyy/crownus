@@ -1,2 +1,1 @@
-#procfile
-web: pm2 start index.js --deep-monitoring --attach
+web: npm run start

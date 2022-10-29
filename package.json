@@ -1,5 +1,5 @@
 {
-    "name": "Crownus👽",
+    "name": "Crownus",
     "version": "1.2.0",
     "main": "index.js",
     "dependencies": {
@@ -26,6 +26,7 @@
         "mal-scraper": "^2.11.4",
         "moment-timezone": "^0.5.34",
         "ms": "^2.1.3",
+        "nodemon": "^2.0.20",        
         "node-cron": "^3.0.2",
         "parse-ms": "^2.1.0",
         "pino": "^8.0.0",
@@ -46,7 +47,7 @@
     },
     "scripts": {
         "debug": "nodemon --exec \"cls && node .\" --ignore \"*.json\" --ignore \"test/*.js\"",
-        "start": "node index.js"
+        "start": "nodemon index"
     },
     "keywords": [],
     "author": "",
