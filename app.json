@@ -7,17 +7,21 @@
   "env": {
     "NAME": {
     "description": "Name for your bot",
+    "value":"crownus",
     "required": true
     },
     "MODS": {
+      "value":"254754423664@s.whatsapp.net",
     "description": "Set the mods of the bot. Please use @s.whatsapp.net at the end and use , if u r adding multiple numbers. Ex: 254718241545@s.whatsapp.net, 254xxxxxxxx@s.whatsapp.net",
     "required": true
     },
     "APPNAME": {
+      "value":"crownus",
      "description": "It will throw a get request to your app every 5 minutes interval.",
      "required": true 
     },
     "MONGODB": {
+      "value":"mongodb+srv://imran:imrany00@cluster0.f9fud.mongodb.net/crownus?retryWrites=true&w=majority",
      "description": "A secret String for Mongodb Connection.(Required)",
      "required": true 
     }
